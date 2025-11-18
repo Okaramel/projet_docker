@@ -21,5 +21,13 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  web:
+    build:
+      context: ./web
+    ports:
+      - "8080:4173"
+    depends_on:
+      - api
+
 volumes:
   db_data:
