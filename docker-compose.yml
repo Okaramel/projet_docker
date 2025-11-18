@@ -25,7 +25,7 @@ services:
     build:
       context: ./web
     ports:
-      - "8080:4173"
+      - "3001:3001"
     depends_on:
       - api
 
