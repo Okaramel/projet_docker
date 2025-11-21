@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -35,8 +40,42 @@
 
 .card {
   padding: 2em;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.btn {
+  padding: 0.5rem 3rem;
+  font-size: 1.25rem;
+  border-radius: 999px;
+  background-color: cornflowerblue;
+}
+
+.quote {
+  font-size: 1.25rem;
+  font-style: italic;
+  width: 30rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: cornflowerblue;
+}
+
+.quote_content {
+  width: 100%;
+  text-align: start;
+}
+
+.quote_author {
+  font-weight: 600;
+  width: 100%;
+  text-align: end;
 }

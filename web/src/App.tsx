@@ -1,33 +1,32 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Quote } from './components/quote'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [quoteId, setQuoteId] = useState<number | null>(34)
+
+  const handleOnClick = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/quote/random")
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const data = await res.json()
+      console.log(data);
+      setQuoteId(data.id)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <h1>Clair de Lune</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <Quote
+          quote_author='Aldric'
+          quote_content="C'est soit une bonne idée, soit une bonne histoire"
+        />
+        <button className='btn' onClick={handleOnClick}>{quoteId ? "Regénérer" : "Générer"}</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
